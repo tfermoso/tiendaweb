@@ -1,0 +1,12 @@
+
+#registroForm *{
+display: block;
+font-size: 18px;
+margin: 10px 0 5px 10px
+}
+
+#registroForm{
+    width: 40%;
+    border: 2px solid black;
+    border-radius: 10px;
+}

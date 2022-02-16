@@ -1,0 +1,73 @@
+
+#login{
+    width: 30%;
+    border: 1px solid white;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    height: 40%;
+    border-radius: 5px;
+
+    
+}
+#register{
+    width: 40%;
+    border: 1px solid white;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    height: 50%;
+    border-radius: 5px;  
+}
+body{
+    border: none;
+    height: 100vh;
+    margin:0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url("../img/backgroundlogin.jfif");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+#login *, #register *{
+    display: block;
+    width: 80%;
+    margin:10px auto;
+}
+#login input, #register input{
+    line-height: 30px;
+    font-size: 25px;
+    border-radius: 5px;
+}
+.button{
+    line-height: 30px;
+    font-size: 25px;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+}
+
+label{
+    color: white;
+    font-size: 25px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.link{
+    text-align: right;
+}
+.link a{
+    color: white !important;
+}
+
+@media (max-width: 700px) {
+    #login{
+        width: 80%;
+        border: 1px solid white;
+        border-bottom: 5px solid white;
+        border-right: 5px solid white;
+        height: 60%;
+        border-radius: 5px;
+    
+        
+    }
+  }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/css/login.css">
+</head>
+<body>
+    <form id="login" action="" method="post">
+        <label for="">Usuario</label>
+        <input type="text" name="usr" id="" placeholder="Nombre de usuario" value={{request.args["usr"]}}>
+        <label for="">password</label>
+        <input type="password" name="password" id="" placeholder="Contraseña">
+        <input class="button" type="submit" value="Entrar">
+        <div class="msg">{{mensaje}}</div>
+        <div class="link">
+            <a href="registro">Crear nuevo usuario</a>
+        </div>
+    </form>
+</body>
+</html>

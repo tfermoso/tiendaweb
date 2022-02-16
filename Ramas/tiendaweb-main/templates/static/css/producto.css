@@ -1,0 +1,47 @@
+*{
+    border: 1px solid black;
+}
+form *{
+    display: block;
+    margin-top: 4px;
+}
+.ocultar{
+    display: none;
+}
+
+form input,form textarea{
+    width: 90%;
+    font-size: 20px;
+    border-radius: 5px;
+}
+form label{
+    font-size: 20px;
+    font-weight: bold;
+}
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.container >div{
+    width: 40%;
+}
+input[type=submit]{
+    background-color: green;
+    color: white;
+}
+.filaProducto{
+    display: flex;
+    justify-content: space-between;
+}
+.tituloProducto{
+    width: 40%;
+}
+.filaProducto img{
+    height: 200px;
+    width: 200px;
+}
+.btnBorrar{
+    width: 50px !important;
+    height: 50px !important;
+}

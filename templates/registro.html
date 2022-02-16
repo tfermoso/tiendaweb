@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="static/css/registro.css">
+    <script src="static/js/registro.js"></script>
+</head>
+<body>
+    <h1>Nuevo usuario</h1>
+    <form id="registroForm" action="crearUsuario" method="post">
+        <label for="">Nombre del usuario</label>
+        <input type="text" name="nombre" id="" placeholder="Nombre de usuario" required>
+        <label for="">Contraseña</label>
+        <input type="password" name="password" id="password" placeholder="Contraseña" required>
+        <label for="">Repite la contraseña</label>
+        <input type="password" name="" id="repassword" placeholder="Contraseña" required>
+        <input type="submit" value="Crear usuario" id="btnEnviar" disabled>
+        <div>{{request.args["mensaje"]}}</div>
+        <div class="link">
+            <a href="login">Si ya tiene usuario pulse aquí</a>
+        </div>
+    </form>
+</body>
+</html>

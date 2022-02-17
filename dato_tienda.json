@@ -1,11 +1,11 @@
 {
   "productos": [
     {
-      "nombre": "guitarra3",
-      "descripcion": "asdfasdfadsf",
+      "nombre": "guitarra44",
+      "descripcion": "asdfasdfadsf44",
       "img": "guitarra0123.jpg",
-      "precio": "24",
-      "cantidad": "12",
+      "precio": "44",
+      "cantidad": "44",
       "id": 3
     }
   ],

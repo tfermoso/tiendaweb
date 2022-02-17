@@ -41,7 +41,8 @@ input[type=submit]{
     height: 200px;
     width: 200px;
 }
-.btnBorrar{
+.btnBorrar, .btnEditar{
     width: 50px !important;
     height: 50px !important;
+    cursor: pointer;
 }

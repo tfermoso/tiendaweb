@@ -1,14 +1,5 @@
 {
-  "productos": [
-    {
-      "nombre": "guitarra3",
-      "descripcion": "asdfasdfadsf",
-      "img": "guitarra0123.jpg",
-      "precio": "24",
-      "cantidad": "12",
-      "id": 3
-    }
-  ],
+  "productos": [],
   "clientes": [
     {
       "nombre": "Juan",

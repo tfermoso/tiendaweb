@@ -1,12 +1,20 @@
 {
   "productos": [
     {
-      "nombre": "guitarra3",
+      "nombre": "guitarra3333",
       "descripcion": "asdfasdfadsf",
       "img": "guitarra0123.jpg",
       "precio": "24",
-      "cantidad": "12",
+      "cantidad": "36",
       "id": 3
+    },
+    {
+      "nombre": "espada",
+      "descripcion": "espada",
+      "img": "espadastrider-aragorn-espadamontaraz-espadasmedias-001.png",
+      "precio": "1000",
+      "cantidad": "1",
+      "id": 5
     }
   ],
   "clientes": [
@@ -115,5 +123,5 @@
       "password": "78d8045d684abd2eece923758f3cd781489df3a48e1278982466017f"
     }
   ],
-  "contador": 4
+  "contador": 5
 }

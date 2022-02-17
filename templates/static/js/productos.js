@@ -28,7 +28,10 @@ window.onload = function () {
             <div class="tituloProducto"><h4>${productos[i].nombre}</h4>
             <p>${productos[i].descripcion}</p></div>
             <div><label>Precio:</label><span>${productos[i].precio}</span><label>Cantidad:</label><span>${productos[i].cantidad}</span></div>
-            <div><img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt=""></div></div>`;
+            <div>
+                <img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
+                <a href="editarproducto?id=${productos[i].id}"><img class="btnEditar" src="static/img/edit.jpg" alt=""></a>
+            </div></div>`;
         }
         document.getElementById("listadoProductos").innerHTML = contenido;
         asociarEventos();

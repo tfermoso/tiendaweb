@@ -1,9 +1,5 @@
 # serve.py
 
-
-
-
-import re
 from flask import Flask,redirect,url_for,make_response
 from flask import render_template
 from flask import request,session,jsonify
@@ -61,6 +57,24 @@ def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad):
         file.close()
     return tienda["productos"];
 
+def editProducto(idProducto,nombreProducto,descripcion,filename,precio,cantidad):
+    tienda={}
+    with open("dato_tienda.json",'r') as file:
+        tienda=json.load(file);
+        file.close()
+    for p in tienda["productos"]:
+        if(p["id"]==idProducto):
+            p["nombre"]=nombreProducto;
+            p["descripcion"]=descripcion 
+            if(filename!=""):
+                p["img"]=filename
+            p["precio"]=precio;
+            p["cantidad"]=cantidad;
+            break;
+    with open("dato_tienda.json",'w') as file:
+        json.dump(tienda,file,indent=2);
+        file.close()
+    
 def nombreUnico(fichero,directorio):
     dir=pathlib.Path(directorio)
     encontrado=False;
@@ -210,7 +224,21 @@ def eliminarProducto():
     idproducto=int(request.args["id"])
     result=removeProduct(idproducto)
     return jsonify(result);
-    
+
+@app.route("/editarproducto",methods=["POST"])
+def editarProducto():
+    idProducto=int(request.form["idProducto"]);
+    nombreProducto=request.form["nombre"];
+    descripcion=request.form["descripcion"];
+    precio=request.form["precio"];
+    cantidad=request.form["cantidad"];
+    f = request.files['archivo']    
+    filename = f.filename;
+    if(filename!=""):
+        filename=nombreUnico(filename,"./templates/static/img")
+        f.save(os.path.join('./templates/static/img', filename))  
+    productos=editProducto(idProducto,nombreProducto,descripcion,filename,precio,cantidad) 
+    return redirect(url_for("crearProducto"));
 
 
 # run the application

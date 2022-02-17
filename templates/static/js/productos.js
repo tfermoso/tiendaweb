@@ -102,6 +102,7 @@ window.onload = function () {
                 
                 productos.forEach(elemento => {
                     if (elemento.id == idProducto) {
+                        document.getElementById("cabecera").innerHTML = "EDITAR PRODUCTO";
                         document.getElementById("inputIdProducto").value = idProducto;
                         document.getElementById("inputNombre").value = elemento.nombre;
                         document.getElementById("inputDescripcion").value = elemento.descripcion;

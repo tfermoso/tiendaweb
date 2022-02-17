@@ -14,7 +14,7 @@
     <div class="container">
         <div class="formulario">
             <!-- LADO IZQUIERDO - FORMULARIO PARA INSERTAR PRODUCTO -->
-            <h1>Formulario Productos</h1>
+            <h1 id="cabecera">INSERTAR PRODUCTO</h1>
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="hidden" id="inputIdProducto" name="idProducto" value="2343">
                 <label for="nombre">Nombre del producto</label><input  type="text" id="inputNombre" name="nombre" required>
@@ -23,7 +23,7 @@
                 <label for="">Precio</label><input required type="number" min="0" step="0.1"  name="precio" id="inputPrecio" value="0">
                 <label for="">Cantidad</label><input required type="number" min="0" name="cantidad" id="inputCantidad" value="0">
                 <label for="archivo">Imagen del producto</label><input type="file" name="archivo" id="inputArchivo" required>
-                <input type="submit" id="inputSubmit" value="Enviar">
+                <input type="submit" id="inputSubmit" value="Insertar Producto">
             </form>
         </div>
         <div class="listaProductos">
@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <button id="btnAjax">Peticion Ajax</button>
+    <!-- <button id="btnAjax">Peticion Ajax</button> -->
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 # serve.py
 
 
+from crypt import methods
+from pickle import GET
 import re
 from flask import Flask, redirect, url_for, make_response
 from flask import render_template
@@ -112,15 +114,18 @@ def registrarUsuario(usr, passw):
         file.close()
 
 
-def leerProductosFichero():
+def leerProductosFichero(idProducto=-1):
     tienda = {}
     with open("dato_tienda.json", 'r') as file:
         tienda = json.load(file)
         file.close()
-    return tienda["productos"]
+    if(idProducto == -1):
+        return tienda["productos"]
+    else:
+        for p in tienda["productos"]:
+            
 
-
-# creates a Flask application, named app
+        # creates a Flask application, named app
 app = Flask(__name__, static_folder='templates/static')
 
 # a route where we will display a welcome message via an HTML template
@@ -225,6 +230,17 @@ def eliminarProducto():
     idproducto = int(request.args["id"])
     result = removeProduct(idproducto)
     return jsonify(result)
+
+
+@app.route("/editarproducto", methods=['GET', 'POST'])
+def editarProducto():
+    if(request.method == "GET"):
+        idProducto = int(request.args["id"])
+        producto = leerProductosFichero(idProducto)
+        if(producto != None):
+            return render_template("formularioproducto.html", product=producto)
+        else:
+            return render_template("formularioproducto.html", msg="No se encuentra el producto")
 
 
 # run the application

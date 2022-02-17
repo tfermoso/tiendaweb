@@ -1,5 +1,4 @@
 window.onload = function () {
-
   function cargarDatos() {
     ajax = new XMLHttpRequest();
     ajax.onreadystatechange = () => {
@@ -7,17 +6,15 @@ window.onload = function () {
         if (ajax.status == 200) {
           productos = JSON.parse(ajax.responseText);
 
-          mostrarProductos(productos)
+          mostrarProductos(productos);
         }
       } else {
-        console.log(ajax.readyState)
+        console.log(ajax.readyState);
       }
-    }
+    };
     //ajax.open('GET', 'https://restcountries.com/v3.1/all', true);
-    ajax.open('GET', 'http://localhost:8085/getproducts', true);
+    ajax.open("GET", "http://localhost:8085/getproducts", true);
     ajax.send(null);
-
-
   }
 
   function mostrarProductos(productos) {
@@ -28,16 +25,15 @@ window.onload = function () {
             <div class="tituloProducto"><h4>${productos[i].nombre}</h4>
             <p>${productos[i].descripcion}</p></div>
             <div><label>Precio:</label><span>${productos[i].precio}</span><label>Cantidad:</label><span>${productos[i].cantidad}</span></div>
-            <div><img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt=""></div></div>`;
+            <div><img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
+            <a href="editarproducto?id=${productos[i].id}"><img src="static/img/edit.png" alt=""></a>
+            </div></div>`;
     }
     document.getElementById("listadoProductos").innerHTML = contenido;
     asociarEventos();
-
   }
 
   setTimeout(cargarDatos, 3000);
-
-
 
   function asociarEventos() {
     let papeleras = document.getElementsByClassName("btnBorrar");
@@ -61,41 +57,21 @@ window.onload = function () {
         */
         ajax.onload = () => {
           productos = JSON.parse(ajax.responseText);
-          mostrarProductos(productos)
-        }
+          mostrarProductos(productos);
+        };
         ajax.onerror = () => {
           alert("Error en la petición");
-        }
+        };
         let url = `http://localhost:8085/eliminarproducto?id=${idProducto}`;
         //let url="http://localhost:8085/eliminarproducto?id="+idProducto;
         //let url2="http://localhost:8085/eliminarproducto";
         let params = "id=" + idProducto;
-        ajax.open("GET", url, true)
+        ajax.open("GET", url, true);
         //ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        ajax.send(params)
-      }
+        ajax.send(params);
+      };
     }
   }
 
   //Editar producto
-  let lapices = document.getElementsByClassName("btnEditar");
-  for (let i = 0; i < lapices.length; i++) {
-    const elementEdit = lapices[i];
-    elementEdit.onclick = (evt) => {
-      let idProducto = parseInt(evt.currentTarget.id.substring(9));
-      productos.forEach((element) => {
-        if (element.id == idProducto) {
-          document.getElementById("inputIdProducto").value = idProducto;
-          document.getElementById("inputNombre").value = element.nombre;
-          document.getElementById("inputDescripcion").value =
-            element.descripcicon;
-          document.getElementById("inputPrecio").value = element.precio;
-          document.getElementById("inputCantidad").value = element.cantidad;
-          document.getElementById("inputArchivo").required = false;
-          document.getElementById("inputSubmit").value = "Editar Producto";
-          document.forms[0].action = "http://localhost:8085/editarproducto";
-        }
-      });
-    };
-  }
-}
+};

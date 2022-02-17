@@ -15,20 +15,25 @@
         <div class="formulario">
             <h1>Formulario Productos</h1>
             <form action="" method="post" enctype="multipart/form-data">
-                <input type="hidden" name="idProducto" value="2343">
-                <label for="nombre">Nombre del producto</label><input  type="text" name="nombre" required>
+                <input type="hidden" name="idProducto" value={{product['id']}}>
+                <label for="nombre">Nombre del producto</label><input type="text" name="nombre"
+                    value="{{product['nombre']}}" required>
                 <label for="descripcion">Descripción</label><textarea name="descripcion" id="" required cols="30"
-                    rows="4"></textarea>
-                <label for="">Precio</label><input required type="number" min="0" step="0.1"  name="precio" id="" value="0">
-                <label for="">Cantidad</label><input required type="number" min="0" name="cantidad" value="0">
+                    rows="4">{{product['descripcion']}}</textarea>
+                <label for="">Precio</label><input required type="number" min="0" step="0.1" name="precio" id=""
+                    value={{product['precio']}}>
+                <label for="">Cantidad</label><input required type="number" min="0" name="cantidad"
+                    value={{product['cantidad']}}>
                 <label for="archivo">Imagen del producto</label><input type="file" name="archivo" id="" required>
                 <input type="submit" value="Enviar">
             </form>
+            {% if msg!="" %}
+            <p>Mostrando mensaje</p>
+            {% endif %}
         </div>
         <div class="listaProductos">
             <h2>Listado de productos</h2>
             <div id="listadoProductos">
-               
             </div>
         </div>
     </div>

@@ -81,35 +81,18 @@ window.onload = function () {
             const edicion = edit[i];
             edicion.onclick = (evt) => {
                 let idProducto = evt.currentTarget.id.substring(9);
-                
-                ajax = new XMLHttpRequest();
-                /*
-                ajax.onreadystatechange = () => {
-                    if (ajax.readyState == 4){
-                        if (ajax.status == 200) {
-                            productos = JSON.parse(ajax.responseText);
-                            mostrarProductos(productos)
-                        }
-                        if(ajax.status==500){
-                            alert("Error en el Servidor")
-                        }
-                    }                               
-                }
-                */
-               ajax.onload=()=>{
-                productos = JSON.parse(ajax.responseText);
-                mostrarProductos(productos)
-               }
-               ajax.onerror=()=>{
-                   alert("Error en la petición");
-               }
-                let url = `http://localhost:8085/editarproducto?id=${idProducto}`;
-                //let url="http://localhost:8085/eliminarproducto?id="+idProducto;
-                //let url2="http://localhost:8085/eliminarproducto";
-                let params = "id=" + idProducto;
-                ajax.open("GET", url, true)
-                //ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                ajax.send(params)
+                productos.forEach(element => {
+                    if(element.id==idProducto){
+                        document.getElementById("inputIdProducto").value=idProducto;
+                        document.getElementById("inputNombre").value=element.nombre;
+                        document.getElementById("inputDescripcion").value=element.descripcion;
+                        document.getElementById("inputPrecio").value=element.precio;
+                        document.getElementById("inputCantidad").value=element.cantidad;
+                        document.getElementById("inputArchivo").required=false;
+                        document.getElementById("inputSubmit").value="Editar Producto"
+                        document.forms[0].action="http://localhost:8085/editarproducto";
+                    }
+                });
             }
         }
     }

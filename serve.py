@@ -1,9 +1,5 @@
 # serve.py
 
-
-
-
-import re
 from flask import Flask,redirect,url_for,make_response
 from flask import render_template
 from flask import request,session,jsonify
@@ -109,12 +105,19 @@ def registrarUsuario(usr,passw):
         json.dump(tienda,file,indent=2);
         file.close()
 
-def leerProductosFichero():
+def leerProductosFichero(idProducto=-1):
     tienda={}
     with open("dato_tienda.json",'r') as file:
         tienda=json.load(file);
         file.close()
-    return tienda["productos"];
+    if(idProducto==-1):
+        return tienda["productos"];
+    else:
+        for p in tienda["productos"]:
+            if (p["id"]==idProducto):
+                return p;
+        return None
+
 
 # creates a Flask application, named app
 app = Flask(__name__,static_folder='templates/static')
@@ -138,7 +141,7 @@ def paginaProducto():
 @app.route('/crearproducto',methods=['GET','POST'])
 def crearProducto():
     if(request.method=='GET'):
-        return render_template("formularioproducto.html")
+        return render_template("formularioproducto.html"product=None)
     else:
         nombreProducto=request.form["nombre"];
         descripcion=request.form["descripcion"]
@@ -211,6 +214,16 @@ def eliminarProducto():
     result=removeProduct(idproducto)
     return jsonify(result);
     
+@app.route("/editarproducto",methods=["GET","POST"])
+def editarProducto():
+    if(request.method=='GET'):
+        idProducto=int(request.args["id"]);
+        producto=leerProductosFichero(idProducto);
+        if(producto!=None):
+            return render_template("formularioproducto.html",product=producto)
+        else:
+            return render_template("formularioproducto.html",msg="No se encuentra el producto")
+
 
 
 # run the application

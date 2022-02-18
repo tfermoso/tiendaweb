@@ -1,8 +1,8 @@
 {
   "productos": [
     {
-      "nombre": "guitarra3",
-      "descripcion": "asdfasdfadsf",
+      "nombre": "guitarra",
+      "descripcion": "hola",
       "img": "guitarra0123.jpg",
       "precio": "24",
       "cantidad": "12",

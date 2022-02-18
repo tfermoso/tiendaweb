@@ -63,7 +63,8 @@ def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad,idProduc
                 p["cantidad"]=cantidad;
                 p["precio"]=precio;
                 if(filename!=""):
-                    
+                    p["img"]=filename;
+
     with open("dato_tienda.json",'w') as file:
         json.dump(tienda,file,indent=2);
         file.close()
@@ -245,7 +246,7 @@ def editarProducto():
             f.save(os.path.join('./templates/static/img', filename))
         precio=request.form["precio"];
         cantidad=request.form["cantidad"];
-        productos=guardarProducto(idProducto,nombreProducto,descripcion,filename,precio,cantidad) 
+        productos=guardarProducto(nombreProducto,descripcion,filename,precio,cantidad,idProducto) 
         return redirect(url_for("crearProducto"));
 
 # run the application

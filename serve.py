@@ -34,28 +34,36 @@ def removeProduct(id):
         file.close()
     return productos;
 
-def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad):
+def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad,idProducto):
     tienda={}
     with open("dato_tienda.json",'r') as file:
         tienda=json.load(file);
         file.close()
+    if(idProducto==-1):
+        if("contador" in tienda.keys()):
+            tienda["contador"]+=1;
+        else:
+            tienda["contador"]=0;
+            
+        contador=tienda["contador"];
 
-    if("contador" in tienda.keys()):
-        tienda["contador"]+=1;
+        tienda["productos"].append(
+            {"nombre":nombreProducto,
+            "descripcion":descripcion,
+            "img":filename,
+            "precio":precio,
+            "cantidad":cantidad,
+            "id":contador
+            })
     else:
-        tienda["contador"]=0;
-        
-    contador=tienda["contador"];
-
-    tienda["productos"].append(
-        {"nombre":nombreProducto,
-        "descripcion":descripcion,
-        "img":filename,
-        "precio":precio,
-        "cantidad":cantidad,
-        "id":contador
-        })
-
+        for p in tienda["productos"]:
+            if(p["id"]==idProducto):
+                p["nombre"]=nombreProducto;
+                p["descripcion"]=descripcion;
+                p["cantidad"]=cantidad;
+                p["precio"]=precio;
+                if(filename!=""):
+                    
     with open("dato_tienda.json",'w') as file:
         json.dump(tienda,file,indent=2);
         file.close()
@@ -226,6 +234,19 @@ def editarProducto():
             return render_template("formularioproducto.html",product=producto)
         else:
             return render_template("formularioproducto.html", msg="No se encuentra el producto")
+    else:
+        idProducto=int(request.form["idProducto"]);
+        nombreProducto=request.form["nombre"];
+        descripcion=request.form["descripcion"]
+        f = request.files['archivo']    
+        filename = f.filename;
+        if(filename!=""):
+            filename=nombreUnico(filename,"./templates/static/img")
+            f.save(os.path.join('./templates/static/img', filename))
+        precio=request.form["precio"];
+        cantidad=request.form["cantidad"];
+        productos=guardarProducto(idProducto,nombreProducto,descripcion,filename,precio,cantidad) 
+        return redirect(url_for("crearProducto"));
 
 # run the application
 if __name__ == "__main__":

@@ -1,12 +1,20 @@
 {
   "productos": [
     {
-      "nombre": "guitarra3",
-      "descripcion": "asdfasdfadsf",
-      "img": "guitarra0123.jpg",
-      "precio": "24",
-      "cantidad": "12",
-      "id": 3
+      "id": 5,
+      "nombre": "Guitarra ac\u00fastica",
+      "descripcion": "Una guitarra ac\u00fastica de gran calidad.",
+      "img": "guitarra0123456789.jpg",
+      "precio": "1200",
+      "cantidad": "20"
+    },
+    {
+      "id": 6,
+      "nombre": "asdfalskjdhf",
+      "descripcion": "\u00f1laksdhjf\u00f1laskjdf\u00f1ljk",
+      "img": "guitar0123456.jpg",
+      "precio": "23",
+      "cantidad": "40"
     }
   ],
   "clientes": [
@@ -115,5 +123,5 @@
       "password": "78d8045d684abd2eece923758f3cd781489df3a48e1278982466017f"
     }
   ],
-  "contador": 4
+  "contador": 6
 }

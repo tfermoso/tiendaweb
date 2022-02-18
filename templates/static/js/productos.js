@@ -29,7 +29,7 @@ window.onload = function () {
             <p>${productos[i].descripcion}</p></div>
             <div><label>Precio:</label><span>${productos[i].precio}</span><label>Cantidad:</label><span>${productos[i].cantidad}</span></div>
             <div><img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt=""></div>
-            <div><img src="static/img/btnEdit.png" id="btnEditar${productos[i].id}" class="btnEdit" alt=""></div></div>`;
+            <div><img src="static/img/btnEdit.png" id="btnEditar${productos[i].id}" class="btnEditar" alt=""></div></div>`;
         }
         document.getElementById("listadoProductos").innerHTML = contenido;
         asociarEventos();
@@ -83,16 +83,43 @@ window.onload = function () {
                 let idProducto = evt.currentTarget.id.substring(9);
                 productos.forEach(element => {
                     if(element.id==idProducto){
-                        document.getElementById("inputIdProducto").value=idProducto;
-                        document.getElementById("inputNombre").value=element.nombre;
-                        document.getElementById("inputDescripcion").value=element.descripcion;
-                        document.getElementById("inputPrecio").value=element.precio;
-                        document.getElementById("inputCantidad").value=element.cantidad;
-                        document.getElementById("inputArchivo").required=false;
-                        document.getElementById("inputSubmit").value="Editar Producto"
-                        document.forms[0].action="http://localhost:8085/editarproducto";
+                        document.getElementById("idProducto").value=idProducto;
+                        document.getElementById("nombre").value=element.nombre;
+                        document.getElementById("descripcion").value=element.descripcion;
+                        document.getElementById("precio").value=element.precio;
+                        document.getElementById("cantidad").value=element.cantidad;
+                        document.getElementById("archivo").required=false;
+                        document.getElementById("submit").value="Editar Producto"
+                        document.forms[0].action="";
                     }
                 });
+                document.forms[0].onsubmit=(e)=>
+                {
+                    let sendedit = document.getElementById("submit");
+                    if (sendedit.value=="Editar Producto" || document.forms[0].action==""){
+                        e.preventDefault()
+                        ajax = new XMLHttpRequest();
+                        let url = `http://localhost:8085/crearproducto`;
+                        var formData = new FormData(document.getElementById('form'));
+                        ajax.open("POST", url, true)
+                        ajax.send(formData);
+                        ajax.onload=()=>{
+                            productos = JSON.parse(ajax.responseText);
+                            mostrarProductos(productos);
+                            document.getElementById("idProducto").value="";
+                            document.getElementById("nombre").value="";
+                            document.getElementById("descripcion").value="";
+                            document.getElementById("precio").value="";
+                            document.getElementById("cantidad").value="";
+                            document.getElementById("archivo").required=true;
+                            document.getElementById("submit").value="Crear Producto"
+                            document.forms[0].action="http://localhost:8085/crearproducto"
+                        }
+                        ajax.onerror=()=>{
+                            alert("Error en la petición");
+                        }
+                    }
+                }
             }
         }
     }

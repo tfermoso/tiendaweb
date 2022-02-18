@@ -123,7 +123,8 @@ def leerProductosFichero(idProducto=-1):
         return tienda["productos"]
     else:
         for p in tienda["productos"]:
-            
+            if(p["id"]==idProducto):
+                
 
         # creates a Flask application, named app
 app = Flask(__name__, static_folder='templates/static')
@@ -241,7 +242,21 @@ def editarProducto():
             return render_template("formularioproducto.html", product=producto)
         else:
             return render_template("formularioproducto.html", msg="No se encuentra el producto")
-
+    else:
+        idProducto=request.form['id']
+        nombreProducto = request.form["nombre"]
+        descripcion = request.form["descripcion"]
+        precio = request.form["precio"]
+        cantidad = request.form["cantidad"]
+        f = request.files['archivo']
+        filename = f.filename
+        if (filename!=""):
+            filename = nombreUnico(filename, "./templates/static/img")
+        f.save(os.path.join('./templates/static/img', filename))
+        productos = guardarProducto(
+            nombreProducto, descripcion, filename, precio, cantidad)
+        print(productos)
+        return redirect(url_for("crearProducto"))
 
 # run the application
 if __name__ == "__main__":

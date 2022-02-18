@@ -26,7 +26,7 @@ form label{
 .container >div{
     width: 40%;
 }
-input[type=submit]{
+input[type=submit], #cabecera {
     background-color: green;
     color: white;
 }

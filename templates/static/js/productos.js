@@ -102,6 +102,8 @@ window.onload = function () {
                 
                 productos.forEach(elemento => {
                     if (elemento.id == idProducto) {
+                        document.getElementById("cabecera").style.color = "white";
+                        document.getElementById("cabecera").style.backgroundColor = "blue";
                         document.getElementById("cabecera").innerHTML = "EDITAR PRODUCTO";
                         document.getElementById("inputIdProducto").value = idProducto;
                         document.getElementById("inputNombre").value = elemento.nombre;

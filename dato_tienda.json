@@ -2,10 +2,10 @@
   "productos": [
     {
       "nombre": "guitarra44",
-      "descripcion": "asdfasdfadsf44",
+      "descripcion": "guitarra ac\u00fastica espa\u00f1ola",
       "img": "guitarra0123.jpg",
-      "precio": "44",
-      "cantidad": "44",
+      "precio": "60",
+      "cantidad": "30",
       "id": 3
     }
   ],

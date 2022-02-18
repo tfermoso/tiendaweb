@@ -63,6 +63,7 @@ def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad,idProduc
                 p["cantidad"]=cantidad;
                 p["precio"]=precio;
                 if(filename!=""):
+                    p["img"]=filename;
                     
     with open("dato_tienda.json",'w') as file:
         json.dump(tienda,file,indent=2);

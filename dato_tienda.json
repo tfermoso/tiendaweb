@@ -1,12 +1,20 @@
 {
   "productos": [
     {
-      "nombre": "guitarra44",
-      "descripcion": "guitarra ac\u00fastica espa\u00f1ola",
-      "img": "guitarra0123.jpg",
-      "precio": "60",
-      "cantidad": "30",
-      "id": 3
+      "nombre": "guitarra",
+      "descripcion": "tipo ac\u00fastica",
+      "img": "guitarra0.jpg",
+      "precio": "54.9",
+      "cantidad": "20",
+      "id": 5
+    },
+    {
+      "nombre": "guitarra el\u00e9ctrica",
+      "descripcion": "guitarra el\u00e9ctrica sin amplificador",
+      "img": "guitar0.jpg",
+      "precio": "120",
+      "cantidad": "14",
+      "id": 6
     }
   ],
   "clientes": [
@@ -119,5 +127,5 @@
       "password": "99fb2f48c6af4761f904fc85f95eb56190e5d40b1f44ec3a9c1fa319"
     }
   ],
-  "contador": 4
+  "contador": 6
 }

@@ -41,8 +41,27 @@ input[type=submit], #cabecera {
     height: 200px;
     width: 200px;
 }
-.btnBorrar, .btnEditar{
-    width: 50px !important;
-    height: 50px !important;
+
+#btnImg {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.btnInsertar, .btnEditar, .btnBorrar {
+    width: 55px !important;
+    height: 55px !important;
     cursor: pointer;
+}
+
+.btnInsertar {
+    background-color: green;
+}
+
+.btnEditar {
+    background-color: blue;
+}
+
+.btnBorrar {
+    background-color: red;
 }

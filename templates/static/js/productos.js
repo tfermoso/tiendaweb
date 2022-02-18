@@ -32,15 +32,14 @@ window.onload = function () {
                     <img src="static/img/${productos[i].img}" alt="">
                     <div class="tituloProducto">
                         <h4>${productos[i].nombre}</h4>
-                        <p>${productos[i].descripcion}</p>
+                        <h4>${productos[i].descripcion}</h4>
+                        <h4>Precio: ${productos[i].precio}</h4>
+                        <h4>Cantidad: ${productos[i].cantidad}</h4>
                     </div>
-                    <div>
-                        <label>Precio:</label><span>${productos[i].precio}</span>
-                        <label>Cantidad:</label><span>${productos[i].cantidad}</span>
-                    </div>
-                    <div>
-                        <img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
-                        <img src="static/img/editar.svg" id="btnEditar${productos[i].id}" class="btnEditar" alt="">
+                    <div id="btnImg">
+                        <img src="static/img/insertarBLANCO.png" id="btnInsertar" class="btnInsertar" alt="">
+                        <img src="static/img/editarBLANCO.png" id="btnEditar${productos[i].id}" class="btnEditar" alt="">
+                        <img src="static/img/borrarBLANCO.png" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
                     </div>
                 </div>
             `;
@@ -49,7 +48,7 @@ window.onload = function () {
         asociarEventos();
 
     }
-    setTimeout(cargarDatos, 1500);
+    setTimeout(cargarDatos, 1000);
 
 
     function asociarEventos() {
@@ -97,7 +96,7 @@ window.onload = function () {
             const elementoEditar = lapices[i];
 
             elementoEditar.onclick = (evento) => {
-                
+                // elementoEditar.parentElement.parentElement.style.backgroundColor = "rgba(0,0,255,0.3)";
                 let idProducto = parseInt(evento.currentTarget.id.substring(9));
                 
                 productos.forEach(elemento => {
@@ -118,5 +117,6 @@ window.onload = function () {
                 });
             }
         }
+
     }
 }

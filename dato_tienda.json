@@ -1,5 +1,14 @@
 {
-  "productos": [],
+  "productos": [
+    {
+      "nombre": "guitarra",
+      "descripcion": "guitarra espa\u00f1ola",
+      "img": "guitarra01234.jpg",
+      "precio": "50",
+      "cantidad": "5",
+      "id": 5
+    }
+  ],
   "clientes": [
     {
       "nombre": "Juan",
@@ -106,5 +115,5 @@
       "password": "78d8045d684abd2eece923758f3cd781489df3a48e1278982466017f"
     }
   ],
-  "contador": 4
+  "contador": 5
 }

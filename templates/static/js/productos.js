@@ -30,7 +30,7 @@ window.onload = function () {
             <div><label>Precio:</label><span>${productos[i].precio}</span><label>Cantidad:</label><span>${productos[i].cantidad}</span></div>
             <div>
                 <img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
-                <img src="static/img/edit.png" id="btnEditar${productos[i].id}" class="btnEditar" alt="">
+                <img src="static/img/editar.png" id="btnEditar${productos[i].id}" class="btnEditar" alt="">
             </div></div>`;
         }
         document.getElementById("listadoProductos").innerHTML = contenido;

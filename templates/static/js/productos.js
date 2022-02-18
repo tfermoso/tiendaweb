@@ -1,5 +1,5 @@
 window.onload = function () {
-
+    let productos=[];
     function cargarDatos() {
         ajax = new XMLHttpRequest();
         ajax.onreadystatechange = () => {
@@ -29,8 +29,8 @@ window.onload = function () {
             <p>${productos[i].descripcion}</p></div>
             <div><label>Precio:</label><span>${productos[i].precio}</span><label>Cantidad:</label><span>${productos[i].cantidad}</span></div>
             <div>
-            <img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
-            <img src="static/img/editar.png" id="btnEditar${productos[i].id}" class="btnEditar" alt="">
+                <img src="static/img/borrar.jpg" id="btnEliminar${productos[i].id}" class="btnBorrar" alt="">
+                <img src="static/img/edit.png" id="btnEditar${productos[i].id}" class="btnEditar" alt="">
             </div></div>`;
         }
         document.getElementById("listadoProductos").innerHTML = contenido;
@@ -79,27 +79,26 @@ window.onload = function () {
             }
         }
 
+
+        //Editar Producto por AJAX
         let lapices=document.getElementsByClassName("btnEditar");
         for (let i = 0; i < lapices.length; i++) {
             const elementEdit = lapices[i];
             elementEdit.onclick=(evt)=>{
-                let idProducto=parseInt(evt.currentTarget.id.substring(9));
-                producto.forEach(element => {
-                    if (element.id==idProducto){
+                let idProducto = parseInt(evt.currentTarget.id.substring(9));
+                productos.forEach(element => {
+                    if(element.id==idProducto){
                         document.getElementById("inputIdProducto").value=idProducto;
                         document.getElementById("inputNombre").value=element.nombre;
                         document.getElementById("inputDescripcion").value=element.descripcion;
                         document.getElementById("inputPrecio").value=element.precio;
                         document.getElementById("inputCantidad").value=element.cantidad;
                         document.getElementById("inputArchivo").required=false;
-                        document.getElementById("inputSubmint").value="Editar Producto"
+                        document.getElementById("inputSubmit").value="Editar Producto"
                         document.forms[0].action="http://localhost:8085/editarproducto";
-
                     }
-                    
                 });
             }
-            
         }
     }
 

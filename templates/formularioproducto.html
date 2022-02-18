@@ -14,15 +14,15 @@
     <div class="container">
         <div class="formulario">
             <h1>Formulario Productos</h1>
-            <form action="http://localhost:8085/editarproducto" method="post" enctype="multipart/form-data">
-                <input type="hidden"id="inputIdProducto" name="idProducto" value="2343">
-                <label for="nombre">Nombre del producto</label><input  type="text"id="inputNombre" name="nombre" required>
+            <form action="" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="inputIdProducto" name="idProducto" value="2343">
+                <label for="nombre">Nombre del producto</label><input  type="text" id="inputNombre" name="nombre" required>
                 <label for="descripcion">Descripción</label><textarea name="descripcion" id="inputDescripcion" required cols="30"
                     rows="4"></textarea>
                 <label for="">Precio</label><input required type="number" min="0" step="0.1"  name="precio" id="inputPrecio" value="0">
-                <label for="">Cantidad</label><input required type="number" min="0" name="cantidad"id="inputCantidad" value="0">
+                <label for="">Cantidad</label><input required type="number" min="0" name="cantidad" id="inputCantidad" value="0">
                 <label for="archivo">Imagen del producto</label><input type="file" name="archivo" id="inputArchivo" required>
-                <input type="submit"id="inputSubmit" value="Enviar">
+                <input id="inputSubmit" type="submit" value="Enviar">
             </form>
         </div>
         <div class="listaProductos">

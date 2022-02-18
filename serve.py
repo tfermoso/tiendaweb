@@ -27,32 +27,42 @@ def removeProduct(id):
         file.close()
     return productos;
 
-def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad):
+def guardarProducto(nombreProducto,descripcion,filename,precio,cantidad, idProducto = -1):
     tienda={}
     with open("dato_tienda.json",'r') as file:
-        tienda=json.load(file);
+        tienda=json.load(file)
         file.close()
 
-    if("contador" in tienda.keys()):
-        tienda["contador"]+=1;
-    else:
-        tienda["contador"]=0;
-        
-    contador=tienda["contador"];
+    if idProducto == -1:
+        if("contador" in tienda.keys()):
+            tienda["contador"]+=1
+        else:
+            tienda["contador"]=0
+            
+        contador=tienda["contador"]
 
-    tienda["productos"].append(
-        {"nombre":nombreProducto,
-        "descripcion":descripcion,
-        "img":filename,
-        "precio":precio,
-        "cantidad":cantidad,
-        "id":contador
-        })
+        tienda["productos"].append(
+            {"nombre":nombreProducto,
+            "descripcion":descripcion,
+            "img":filename,
+            "precio":precio,
+            "cantidad":cantidad,
+            "id":contador
+            })
+    else:
+        for p in tienda["productos"]:
+            if p["id"] == idProducto:
+                p["nombre"] = nombreProducto
+                p["descripcion"] = descripcion
+                p["cantidad"] = cantidad
+                p["precio"] = precio
+                if filename != "":
+                    p["img"] = filename
 
     with open("dato_tienda.json",'w') as file:
-        json.dump(tienda,file,indent=2);
+        json.dump(tienda,file,indent=2)
         file.close()
-    return tienda["productos"];
+    return tienda["productos"]
 
 def nombreUnico(fichero,directorio):
     dir=pathlib.Path(directorio)
@@ -142,17 +152,17 @@ def crearProducto():
     if(request.method=='GET'):
         return render_template("formularioproducto.html", product = None)
     else:
-        nombreProducto=request.form["nombre"];
+        nombreProducto=request.form["nombre"]
         descripcion=request.form["descripcion"]
         f = request.files['archivo']    
-        filename = f.filename;
+        filename = f.filename
         filename=nombreUnico(filename,"./templates/static/img")
-        precio=request.form["precio"];
-        cantidad=request.form["cantidad"];
+        precio=request.form["precio"]
+        cantidad=request.form["cantidad"]
         f.save(os.path.join('./templates/static/img', filename))
         productos=guardarProducto(nombreProducto,descripcion,filename,precio,cantidad) 
-        print(productos);
-        return redirect(url_for("crearProducto"));
+        print(productos)
+        return redirect(url_for("crearProducto"))
 
 @app.route('/cerrarSesion')
 def cerrarSesion():
@@ -222,6 +232,19 @@ def editarProducto():
             return render_template("formularioproducto.html", product = producto, msg = "hola")
         else:
             return render_template("formularioproducto.html", msg = "No se encuentra el producto")
+    else:
+        idProducto = int(request.form["idProducto"])
+        nombreProducto=request.form["nombre"]
+        descripcion=request.form["descripcion"]
+        precio=request.form["precio"]
+        cantidad=request.form["cantidad"]
+        f = request.files['archivo']
+        filename = f.filename  
+        if filename != "":
+            filename=nombreUnico(filename,"./templates/static/img")
+            f.save(os.path.join('./templates/static/img', filename))
+        guardarProducto(nombreProducto,descripcion,filename,precio,cantidad, idProducto) 
+        return redirect(url_for("crearProducto"))
 
 
 # run the application

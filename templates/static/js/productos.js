@@ -1,24 +1,23 @@
 window.onload = function () {
 
+
     function cargarDatos() {
         ajax = new XMLHttpRequest();
         ajax.onreadystatechange = () => {
             if (ajax.readyState == 4) {
                 if (ajax.status == 200) {
                     productos = JSON.parse(ajax.responseText);
-
-                    mostrarProductos(productos)
+                    mostrarProductos(productos);
                 }
             } else {
-                console.log(ajax.readyState)
+                console.log(ajax.readyState);
             }
         }
         //ajax.open('GET', 'https://restcountries.com/v3.1/all', true);
         ajax.open('GET', 'http://localhost:8085/getproducts', true);
         ajax.send(null);
-
-
     }
+
 
     function mostrarProductos(productos) {
         let contenido = "";
@@ -42,11 +41,9 @@ window.onload = function () {
         }
         document.getElementById("listadoProductos").innerHTML = contenido;
         asociarEventos();
-
     }
 
     setTimeout(cargarDatos, 3000);
-
 
 
     function asociarEventos() {
@@ -71,7 +68,7 @@ window.onload = function () {
                 */
                ajax.onload=()=>{
                 productos = JSON.parse(ajax.responseText);
-                mostrarProductos(productos)
+                mostrarProductos(productos);
                }
                ajax.onerror=()=>{
                    alert("Error en la petición");
@@ -80,11 +77,10 @@ window.onload = function () {
                 //let url="http://localhost:8085/eliminarproducto?id="+idProducto;
                 //let url2="http://localhost:8085/eliminarproducto";
                 let params = "id=" + idProducto;
-                ajax.open("GET", url, true)
+                ajax.open("GET", url, true);
                 //ajax.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-                ajax.send(params)
+                ajax.send(params);
             }
         }
     }
-
 }

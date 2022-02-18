@@ -2,7 +2,7 @@
   "productos": [
     {
       "nombre": "guitarra3",
-      "descripcion": "asdfasdfadsf",
+      "descripcion": "guitarra ac\u00fastica t\u00edpica espa\u00f1ola",
       "img": "guitarra0123.jpg",
       "precio": "24",
       "cantidad": "12",
